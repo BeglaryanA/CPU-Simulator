@@ -4,7 +4,7 @@
 void FakeCPU::get(std::string name)
 {
     std::string line;
-    this->file.open("text.txt");
+    this->file.open("asm.txt");
     if (file.is_open())
     {
         while (std::getline(file, line))
