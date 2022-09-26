@@ -4,7 +4,8 @@
 void FakeCPU::get(std::string name)
 {
     std::string line;
-    this->file.open("text.txt");
+    get_label();
+    this->file.open("asm.txt");
     if (file.is_open())
     {
         while (std::getline(file, line))
@@ -17,6 +18,25 @@ void FakeCPU::get(std::string name)
         std::cout << "File is not open!!!" << std::endl;
     }
     file.close();
+}
+
+void FakeCPU::get_label() 
+{
+    std::string line;
+    this->file.open("asm.txt");
+    if (file.is_open()) 
+    {
+        while (!file.eof())
+        {
+            std::getline(file, line);
+            if (line.find(':') != -1) 
+            {
+                line.erase(line.begin() + line.find(':'));
+                this->label[line] = this->file.tellg();
+            }
+        }
+    }
+    this->file.close();
 }
 
 void FakeCPU::cut(std::string &rhs)
@@ -354,11 +374,20 @@ void FakeCPU::cmp(std::string &dest, std::string &src)
 {
     if ((!check_reg(dest)) && is_number(dest) && check_reg(src))
     {
-        jumps_impl(src, dest);
+        // jumps_impl(src, dest);
+        cmp_1 = stoi(dest);
+        cmp_2 = *(reg[src]);
     }
-    else if (check_reg(dest) && (is_number(src) || check_reg(src)))
+    else if (check_reg(dest) && is_number(src))
     {
-        jumps_impl(dest, src);
+        // jumps_impl(dest, src);
+        cmp_1 = *(reg[dest]);
+        cmp_2 = stoi(src);
+    }
+    else if (check_reg(dest) && check_reg(src)) 
+    {
+        cmp_1 = *(reg[dest]);
+        cmp_2 = *(reg[src]);
     }
 }
 
@@ -468,4 +497,13 @@ void FakeCPU::make()
     Jumps["jl"] = false;
     Jumps["jg"] = false;
     Jumps["jnz"] = false;
+}
+
+
+void FakeCPU::print() 
+{
+    for (auto it : this->reg) 
+    {
+        std::cout << it.first << " " << *it.second << std::endl;
+    }
 }

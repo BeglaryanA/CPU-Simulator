@@ -5,6 +5,6 @@ int main()
 {
     FakeCPU cpu;
     cpu.get("text.txt");
-    // cpu.print();
+    cpu.print();
     return 0;
 }
