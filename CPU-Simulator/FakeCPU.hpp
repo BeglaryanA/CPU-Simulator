@@ -4,10 +4,7 @@
 void FakeCPU::get(std::string name)
 {
     std::string line;
-<<<<<<< HEAD
     get_label();
-=======
->>>>>>> 437e0726dfff338b15b4e8fd1411df3f22a33c40
     this->file.open("asm.txt");
     if (file.is_open())
     {
@@ -501,8 +498,6 @@ void FakeCPU::make()
     Jumps["jg"] = false;
     Jumps["jnz"] = false;
 }
-<<<<<<< HEAD
-
 
 void FakeCPU::print() 
 {
@@ -511,5 +506,3 @@ void FakeCPU::print()
         std::cout << it.first << " " << *it.second << std::endl;
     }
 }
-=======
->>>>>>> 437e0726dfff338b15b4e8fd1411df3f22a33c40
