@@ -499,7 +499,10 @@ void FakeCPU::make()
     Jumps["jg"] = false;
     Jumps["jnz"] = false;
 }
+<<<<<<< HEAD:CPU-Simulator/FakeCPU.cpp
 
+=======
+>>>>>>> 329c9c5d04637436403726021dca594fc2762e0f:CPU-Simulator/FakeCPU.hpp
 
 void FakeCPU::print() 
 {
@@ -508,4 +511,7 @@ void FakeCPU::print()
         std::cout << it.first << " " << *it.second << std::endl;
     }
 }
+<<<<<<< HEAD:CPU-Simulator/FakeCPU.cpp
 
+=======
+>>>>>>> 329c9c5d04637436403726021dca594fc2762e0f:CPU-Simulator/FakeCPU.hpp
