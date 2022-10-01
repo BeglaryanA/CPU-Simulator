@@ -1,5 +1,6 @@
 #include <iostream>
-#include "FakeCPU.hpp"
+#include "FakeCPU.h"
+
 
 int main()
 {
